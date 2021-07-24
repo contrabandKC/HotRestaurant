@@ -1,0 +1,26 @@
+{
+  "name": "hotrestaurant",
+  "version": "1.0.0",
+  "description": "Table reservations",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap-icons": "^1.5.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "twilio": "^3.66.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/contrabandKC/HotRestaurant.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/contrabandKC/HotRestaurant/issues"
+  },
+  "homepage": "https://github.com/contrabandKC/HotRestaurant#readme"
+}
