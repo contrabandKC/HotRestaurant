@@ -157,32 +157,34 @@
 
     // })
 
-    $(window).load(function() {
-    // $(document).ready(function(){
+    // $(window).load(function() {
+    $(document).ready(function(){
 
 
-        $(".btn-Text").on("click", function(event) {
-        event.preventDefault();
+        // $(".btn-Text").on("click", function(event) {
+        $( "a" ).click(function( event ) {
 
 
-        alert( "Handler for .click() called." + $(this).val());
 
-        var user = ""
+            alert( "Handler for .click() called." + $(this).val());
+            event.preventDefault();
 
-        var userNumber = $(this).val()
+            var user = ""
 
-        $.ajax({url: "/api/waitlist", method: "GET"})
-        .then(function(waitData){
-            // console.log(waitData)
+            var userNumber = $(this).val()
 
-            for (var i=0; i <waitData.length; i++){
-                if (waitData[i].phoneNumber == userNumber){
-                    user = waitData[i]
-                    console.log(user)
-                    break
-                }
-                // console.log(waitData[i].phoneNumber, userNumber )
-            }
+            $.ajax({url: "/api/waitlist", method: "GET"})
+                .then(function(waitData){
+                    // console.log(waitData)
+
+                    for (var i=0; i <waitData.length; i++){
+                        if (waitData[i].phoneNumber == userNumber){
+                            user = waitData[i]
+                            console.log(user)
+                            break
+                        }
+                        // console.log(waitData[i].phoneNumber, userNumber )
+                    }
             $.post("/api/sms", {customerName: user.customerName, customerEmail: user.customerEmail, customerID: user.customerID, phoneNumber: user.phoneNumber});
 
 
