@@ -13,7 +13,7 @@ const sendSms = (phone, message) => {
        to: phone
      })
     .then(message => console.log(message))
-    .catch((err)=>console.log(err));
+    // .catch((err)=>console.log(err));
 }
 
 module.exports = sendSms;
