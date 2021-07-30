@@ -113,28 +113,32 @@
             console.log("______________")
 
 
-    for (var i=0; i <waitData.length; i++){
-        var waitList = $("#waitList")
+                for (var i=0; i <waitData.length; i++){
+                    var waitList = $("#waitList")
 
-        var listItem = $("<li class='list-group-item mt-4'>")
+                    var listItem = $("<li class='list-group-item mt-4'>")
 
-        listItem.append(
-        
-        $("<h2>").text("Table# " + (i+1)),
-        $("<hr>"),
+                    listItem.append(
+                    
+                    $("<h2>").text("Table# " + (i+1)),
+                    $("<hr>"),
 
-        $("<h2>").text("ID: " + waitData[i].customerID),
-        $("<h2>").text("Name: " + waitData[i].customerName),
-        $("<h2>").text("Email: " + waitData[i].customerEmail),
-        $("<h2>").text("Phone: " + waitData[i].phoneNumber),
-        $('<button id="button-4" class="btn btn-danger btn-Text" value='+waitData[i].phoneNumber+'>Text '+waitData[i].customerID+ '</button>')
+                    $("<h2>").text("ID: " + waitData[i].customerID),
+                    $("<h2>").text("Name: " + waitData[i].customerName),
+                    $("<h2>").text("Email: " + waitData[i].customerEmail),
+                    $("<h2>").text("Phone: " + waitData[i].phoneNumber),
+                    $('<button id="button-4" class="btn btn-danger btn-Text" value='+waitData[i].phoneNumber+'>Text '+waitData[i].customerID+ '</button>')
 
-        
-        )
+                    
+                    )
 
-        waitList.append(listItem)
-        }
-    });
+                    waitList.append(listItem)
+                    }
+                    $( ".btn-Text" ).click(function( event ) {
+                        console.log("Im pressed")
+                    })
+
+                });
     }
     
 
@@ -193,10 +197,10 @@
                         }
                         // console.log(waitData[i].phoneNumber, userNumber )
                     }
-            $.post("/api/sms", {customerName: user.customerName, customerEmail: user.customerEmail, customerID: user.customerID, phoneNumber: user.phoneNumber});
+                    $.post("/api/sms", {customerName: user.customerName, customerEmail: user.customerEmail, customerID: user.customerID, phoneNumber: user.phoneNumber});
 
 
-        })
+                    })
 
 
         });
