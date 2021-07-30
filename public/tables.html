@@ -135,10 +135,36 @@
                     waitList.append(listItem)
                     }
                     $( ".btn-Text" ).click(function( event ) {
-                        console.log("Im pressed")
-                    })
 
-                });
+
+
+                        alert( "Handler for .click() called." + $(this).val());
+                        event.preventDefault();
+
+                        var user = ""
+
+                        var userNumber = $(this).val()
+
+                        $.ajax({url: "/api/waitlist", method: "GET"})
+                            .then(function(waitData){
+                                // console.log(waitData)
+
+                                for (var i=0; i <waitData.length; i++){
+                                    if (waitData[i].phoneNumber == userNumber){
+                                        user = waitData[i]
+                                        console.log(user)
+                                        break
+                                    }
+                                    // console.log(waitData[i].phoneNumber, userNumber )
+                                }
+                                $.post("/api/sms", {customerName: user.customerName, customerEmail: user.customerEmail, customerID: user.customerID, phoneNumber: user.phoneNumber});
+
+
+                                })
+
+
+        });                    })
+
     }
     
 
@@ -166,44 +192,44 @@
     // $(window).load(function() {
         // $(".btn-Text").load(function() {
    
-        $(window).on("load", function() {
-            // $(window).on("load", function() {
+        // $(window).on("load", function() {
+        //     // $(window).on("load", function() {
 
 
-        // $(document).ready(function(){
+        // // $(document).ready(function(){
 
 
-        // $(".btn-Text").on("click", function(event) {
-        $( ".btn-Text" ).click(function( event ) {
+        // // $(".btn-Text").on("click", function(event) {
+        // $( ".btn-Text" ).click(function( event ) {
 
 
 
-            alert( "Handler for .click() called." + $(this).val());
-            event.preventDefault();
+        //     alert( "Handler for .click() called." + $(this).val());
+        //     event.preventDefault();
 
-            var user = ""
+        //     var user = ""
 
-            var userNumber = $(this).val()
+        //     var userNumber = $(this).val()
 
-            $.ajax({url: "/api/waitlist", method: "GET"})
-                .then(function(waitData){
-                    // console.log(waitData)
+        //     $.ajax({url: "/api/waitlist", method: "GET"})
+        //         .then(function(waitData){
+        //             // console.log(waitData)
 
-                    for (var i=0; i <waitData.length; i++){
-                        if (waitData[i].phoneNumber == userNumber){
-                            user = waitData[i]
-                            console.log(user)
-                            break
-                        }
-                        // console.log(waitData[i].phoneNumber, userNumber )
-                    }
-                    $.post("/api/sms", {customerName: user.customerName, customerEmail: user.customerEmail, customerID: user.customerID, phoneNumber: user.phoneNumber});
-
-
-                    })
+        //             for (var i=0; i <waitData.length; i++){
+        //                 if (waitData[i].phoneNumber == userNumber){
+        //                     user = waitData[i]
+        //                     console.log(user)
+        //                     break
+        //                 }
+        //                 // console.log(waitData[i].phoneNumber, userNumber )
+        //             }
+        //             $.post("/api/sms", {customerName: user.customerName, customerEmail: user.customerEmail, customerID: user.customerID, phoneNumber: user.phoneNumber});
 
 
-        });
+        //             })
+
+
+        // });
 
 
         
@@ -211,7 +237,7 @@
 
 
 
-});
+// });
     
     </script>
 
