@@ -23,7 +23,7 @@ module.exports = function(app){
 
         const message = req.body.customerName + " Your table will be ready soon!"
 
-        if(tableData.length <5){
+        if(tableData.length <1){
             tableData.push(req.body);
             console.log(req.body.phoneNumber)
             sendSMS(req.body.phoneNumber, message)
